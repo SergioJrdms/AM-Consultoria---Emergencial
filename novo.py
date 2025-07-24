@@ -130,7 +130,7 @@ def parse_xte(file):
         'registroANS_cabecalho', 'versaoPadrao_cabecalho', 'registroANS_monitorado', 'cnpjOperadora', 'dataEmissao',
         'numeroCarteira', 'tempoPlano', 'nomeBeneficiario', 'dataNascimento', 'sexo', 'codigoMunicipioBeneficiario',
         'numeroContrato', 'tipoPlano', 'codigoContratadoNaOperadora', 'cpfContratado', 'cnpjContratado', 'nomeContratado',
-        'numeroGuiaPrestador', 'numeroGuiaOperadora', 'senha', 'tipoAtendimento', 'indicadorRecemNascido',
+        'numeroGuia_prestador', 'numeroGuiaOperadora', 'senha', 'tipoAtendimento', 'indicadorRecemNascido',
         'indicadorAcidente', 'dataRealizacao', 'caraterAtendimento', 'cboProfissional',
         'valorTotalInformado', 'valorTotalProcessado', 'valorTotalLiberado', 'valorTotalGlosa',
         'codigoTabela', 'codigoProcedimento', 'descricaoProcedimento', 'quantidadeExecutada', 'valorInformado',
@@ -192,7 +192,7 @@ def gerar_xte_do_excel(excel_file):
     for nome_arquivo, df_origem in df.groupby("Nome da Origem"):
         if df_origem.empty: continue
 
-        agrupado = df_origem.groupby(["numeroGuiaPrestador"], dropna=False)
+        agrupado = df_origem.groupby(["numeroGuia_prestador"], dropna=False)
 
         root = ET.Element("ans:mensagemTISS", attrib={
             "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance", "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
@@ -255,7 +255,7 @@ def gerar_xte_do_excel(excel_file):
             sub(dados_contratado, "nomeContratado", linha_guia.get("nomeContratado"))
 
             eventos = ET.SubElement(monitoramento, "ans:eventosAtencaoSaude")
-            sub(eventos, "numeroGuiaPrestador", linha_guia.get("numeroGuiaPrestador"))
+            sub(eventos, "numeroGuiaPrestador", linha_guia.get("numeroGuia_prestador"))
             sub(eventos, "numeroGuiaOperadora", linha_guia.get("numeroGuiaOperadora"))
             sub(eventos, "senha", linha_guia.get("senha"))
             sub(eventos, "tipoAtendimento", linha_guia.get("tipoAtendimento"))
