@@ -1,0 +1,4 @@
+streamlit
+pandas
+openpyxl  # Necessário para o pandas ler/escrever arquivos .xlsx
+pytz
