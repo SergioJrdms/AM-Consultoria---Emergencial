@@ -107,26 +107,30 @@ def parse_xte(file):
     }, inplace=True)
 
     colunas_finais = [
-        'Nome da Origem', 'tipoRegistro', 'versaoTISSPrestador', 'formaEnvio', 'tipoTransacao',
-        'numeroLote', 'competenciaLote', 'dataRegistroTransacao_cabecalho', 'horaRegistroTransacao_cabecalho',
-        'registroANS_cabecalho', 'versaoPadrao_cabecalho', 'CNES', 'identificadorExecutante',
-        'codigoCNPJ_CPF', 'municipioExecutante', 'registroANSOperadoraIntermediaria',
-        'tipoAtendimentoOperadoraIntermediaria', 'numeroCartaoNacionalSaude', 'cpfBeneficiario',
-        'sexo', 'dataNascimento', 'municipioResidencia', 'numeroRegistroPlano',
-        'tipoEventoAtencao', 'origemEventoAtencao', 'numeroGuia_prestador', 'numeroGuia_operadora',
-        'identificacaoReembolso', 'formaRemuneracao', 'valorRemuneracao', 'guiaSolicitacaoInternacao',
-        'dataSolicitacao', 'numeroGuiaSPSADTPrincipal', 'dataAutorizacao', 'dataRealizacao',
-        'dataFimPeriodo','dataInicialFaturamento', 'dataProtocoloCobranca', 'dataPagamento', 'dataProcessamentoGuia',
-        'tipoConsulta', 'cboExecutante', 'indicacaoRecemNato', 'indicacaoAcidente',
-        'caraterAtendimento', 'tipoInternacao', 'regimeInternacao', 'tipoAtendimento',
-        'regimeAtendimento', 'tipoFaturamento', 'diariasAcompanhante', 'diariasUTI', 'motivoSaida',
-        'valorTotalInformado', 'valorProcessado', 'valorTotalPagoProcedimentos', 'valorTotalDiarias',
-        'valorTotalTaxas', 'valorTotalMateriais', 'valorTotalOPME', 'valorTotalMedicamentos',
-        'valorGlosaGuia', 'valorPagoGuia', 'valorPagoFornecedores', 'valorTotalTabelaPropria',
-        'valorTotalCoParticipacao', 'declaracaoNascido', 'declaracaoObito', 'codigoTabela',
-        'grupoProcedimento', 'codigoProcedimento', 'quantidadeInformada','valorInformado', 'valorInformado_proc',
-        'valorPagoFornecedor','quantidadePaga', 'unidadeMedida','valorCoParticipacao', 'valorPagoProc', 'valorPagoFornecedor_proc',
-        'Idade_na_Realização', 'diagnosticoCID'
+        'Nome da Origem', 'tipoRegistro', 'versaoTISSPrestador', 'formaEnvio', 'tipoTransacao', 'numeroLote', 
+        'competenciaLote', 'dataRegistroTransacao', 'dataRegistroTransacao_cabecalho', 'horaRegistroTransacao', 
+        'horaRegistroTransacao_cabecalho', 'registroANS_cabecalho', 'versaoPadrao_cabecalho', 'CNES', 
+        'identificadorExecutante', 'codigoCNPJ_CPF', 'municipioExecutante', 'registroANSOperadoraIntermediaria',
+        'tipoAtendimentoOperadoraIntermediaria', 'numeroCartaoNacionalSaude', 'registroANS_monitorado', 
+        'cnpjOperadora', 'dataEmissao', 'numeroCarteira', 'tempoPlano', 'nomeBeneficiario', 'cpfBeneficiario',
+        'dataNascimento', 'sexo', 'Idade_na_Realizacao', 'codigoMunicipioBeneficiario', 'municipioResidencia',
+        'numeroContrato', 'numeroRegistroPlano', 'tipoPlano', 'codigoContratadoNaOperadora', 'cpfContratado', 
+        'cnpjContratado', 'nomeContratado', 'tipoEventoAtencao', 'origemEventoAtencao', 'numeroGuiaPrestador',
+        'numeroGuia_prestador', 'numeroGuiaOperadora', 'numeroGuia_operadora', 'identificacaoReembolso',
+        'guiaSolicitacaoInternacao', 'numeroGuiaSPSADTPrincipal', 'senha', 'dataSolicitacao', 'dataAutorizacao',
+        'dataRealizacao', 'dataInicialFaturamento', 'dataFimPeriodo', 'dataProtocoloCobranca', 'dataPagamento',
+        'dataProcessamentoGuia', 'tipoConsulta', 'tipoAtendimento', 'cboExecutante', 'cboProfissional',
+        'indicadorRecemNascido', 'indicacaoRecemNato', 'indicadorAcidente', 'indicacaoAcidente', 
+        'caraterAtendimento', 'tipoInternacao', 'regimeInternacao', 'regimeAtendimento', 'tipoFaturamento',
+        'diariasAcompanhante', 'diariasUTI', 'motivoSaida', 'declaracaoNascido', 'declaracaoObito',
+        'codigoTabela', 'grupoProcedimento', 'codigoProcedimento', 'descricaoProcedimento', 'quantidadeExecutada',
+        'quantidadeInformada', 'quantidadePaga', 'unidadeMedida', 'valorInformado', 'valorProcessado', 
+        'valorLiberado', 'valorGlosa', 'valorPagoProc', 'valorPagoFornecedor', 'valorCoParticipacao',
+        'valorTotalInformado', 'valorTotalProcessado', 'valorProcessado', 'valorTotalLiberado', 
+        'valorTotalPagoProcedimentos', 'valorTotalDiarias', 'valorTotalTaxas', 'valorTotalMateriais',
+        'valorTotalOPME', 'valorTotalMedicamentos', 'valorTotalGlosa', 'valorGlosaGuia', 'valorPagoGuia',
+        'valorPagoFornecedores', 'valorTotalTabelaPropria', 'valorTotalCoParticipacao', 'formaRemuneracao',
+        'valorRemuneracao', 'diagnosticoCID', 'diagnosticosCID10'
     ]
 
     for col in colunas_finais:
@@ -545,3 +549,4 @@ elif menu == "Converter Excel para XTE/XML":
         except Exception as e:
             st.error(f"Erro durante o processamento: {str(e)}")
             st.error("Verifique se o arquivo Excel possui a estrutura correta.")
+
