@@ -172,7 +172,7 @@ def gerar_xte_do_excel(excel_file):
             if not force:
                 return
             else:
-                ET.SubElement(parent, f"ans:{tag}").text = "0"
+                ET.SubElement(parent, f"ans:{tag}").text = "00"
                 return
         text = str(value).strip()
         if is_date and text:
@@ -552,6 +552,7 @@ elif menu == "Converter Excel para XTE/XML":
         except Exception as e:
             st.error(f"Erro durante o processamento: {str(e)}")
             st.error("Verifique se o arquivo Excel possui a estrutura correta.")
+
 
 
 
