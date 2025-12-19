@@ -268,7 +268,7 @@ def gerar_xte_do_excel(excel_file):
             sub(guia, "tipoEventoAtencao", linha_guia.get("tipoEventoAtencao"))
             sub(guia, "origemEventoAtencao", linha_guia.get("origemEventoAtencao"))
             sub(guia, "numeroGuia_prestador", linha_guia.get("numeroGuia_prestador"), force=True)
-            sub(guia, "numeroGuia_operadora", linha_guia.get("numeroGuia_operadora"))
+            sub(guia, "numeroGuia_operadora", linha_guia.get("numeroGuia_operadora"), force=True)
             
             origem_evento = linha_guia.get("origemEventoAtencao")
             valor_reembolso = ""
@@ -557,6 +557,7 @@ elif menu == "Converter Excel para XTE/XML":
         except Exception as e:
             st.error(f"Erro durante o processamento: {str(e)}")
             st.error("Verifique se o arquivo Excel possui a estrutura correta.")
+
 
 
 
