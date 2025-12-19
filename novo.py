@@ -335,7 +335,12 @@ def gerar_xte_do_excel(excel_file):
                 if pd.notna(proc_linha.get("codigoProcedimento")) or pd.notna(proc_linha.get("grupoProcedimento")):
                     procedimentos_el = ET.SubElement(guia, "ans:procedimentos")
                     identProcedimento_el = ET.SubElement(procedimentos_el, "ans:identProcedimento")
-                    sub(identProcedimento_el, "codigoTabela", proc_linha.get("codigoTabela"))
+                    
+                    codigo_tabela = proc_linha.get("codigoTabela")
+                    if codigo_tabela == "0":
+                        codigo_tabela = "00"
+                    sub(identProcedimento_el, "codigoTabela", codigo_tabela)
+                    
                     Procedimento_el = ET.SubElement(identProcedimento_el, "ans:Procedimento")
                     
                     if pd.notna(proc_linha.get("grupoProcedimento")):
@@ -552,6 +557,7 @@ elif menu == "Converter Excel para XTE/XML":
         except Exception as e:
             st.error(f"Erro durante o processamento: {str(e)}")
             st.error("Verifique se o arquivo Excel possui a estrutura correta.")
+
 
 
 
