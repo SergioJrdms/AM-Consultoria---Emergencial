@@ -167,9 +167,13 @@ def gerar_xte_do_excel(excel_file):
         df = pd.read_excel(excel_file, dtype=str)
 
     # --- Função Auxiliar 'sub' ---
-    def sub(parent, tag, value, is_date=False):
-        if pd.isna(value):
-            return
+    def sub(parent, tag, value, is_date=False, force=False):
+        if pd.isna(value) or str(value).strip() == '':
+            if not force:
+                return
+            else:
+                ET.SubElement(parent, f"ans:{tag}").text = "0"
+                return
         text = str(value).strip()
         if is_date and text:
             original_text = text
@@ -340,7 +344,7 @@ def gerar_xte_do_excel(excel_file):
                         sub(Procedimento_el, "codigoProcedimento", proc_linha.get("codigoProcedimento"))
                     
                     sub(procedimentos_el, "quantidadeInformada", proc_linha.get("quantidadeInformada"))
-                    sub(procedimentos_el, "valorInformado", proc_linha.get("valorInformado"))
+                    sub(procedimentos_el, "valorInformado", proc_linha.get("valorInformado"), force=True)
                     sub(procedimentos_el, "quantidadePaga", proc_linha.get("quantidadePaga"))
                     sub(procedimentos_el, "unidadeMedida", proc_linha.get("unidadeMedida"))
                     sub(procedimentos_el, "valorPagoProc", proc_linha.get("valorPagoProc"))
@@ -548,6 +552,7 @@ elif menu == "Converter Excel para XTE/XML":
         except Exception as e:
             st.error(f"Erro durante o processamento: {str(e)}")
             st.error("Verifique se o arquivo Excel possui a estrutura correta.")
+
 
 
 
