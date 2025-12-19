@@ -348,7 +348,7 @@ def gerar_xte_do_excel(excel_file):
                     sub(procedimentos_el, "quantidadePaga", proc_linha.get("quantidadePaga"))
                     sub(procedimentos_el, "unidadeMedida", proc_linha.get("unidadeMedida"))
                     sub(procedimentos_el, "valorPagoProc", proc_linha.get("valorPagoProc"))
-                    sub(procedimentos_el, "valorPagoFornecedor", proc_linha.get("valorPagoFornecedor"))
+                    sub(procedimentos_el, "valorPagoFornecedor", proc_linha.get("valorPagoFornecedor"), force=True)
                     sub(procedimentos_el, "valorCoParticipacao", proc_linha.get("valorCoParticipacao"))
 
         # --- Finalização com Hash e Formatação ---
@@ -552,6 +552,7 @@ elif menu == "Converter Excel para XTE/XML":
         except Exception as e:
             st.error(f"Erro durante o processamento: {str(e)}")
             st.error("Verifique se o arquivo Excel possui a estrutura correta.")
+
 
 
 
