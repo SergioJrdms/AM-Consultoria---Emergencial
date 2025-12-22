@@ -209,7 +209,7 @@ def gerar_xte_do_excel(excel_file):
         
         root = ET.Element("ans:mensagemEnvioANS", attrib={
             "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance", "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
-            "xsi:schemaLocation": f"{ns} {ns}/tissMonitoramentoV1_04_01.xsd", "xmlns:ans": ns
+            "xsi:schemaLocation": f"{ns} {ns}/tissMonitoramentoV1_05_00.xsd", "xmlns:ans": ns
         })
         
         linha_cabecalho = df_origem.iloc[0]
@@ -232,7 +232,7 @@ def gerar_xte_do_excel(excel_file):
         sub(identificacaoTransacao, "dataRegistroTransacao", data_atual)
         sub(identificacaoTransacao, "horaRegistroTransacao", hora_atual)
         sub(cabecalho, "registroANS", linha_cabecalho.get("registroANS_cabecalho"))
-        sub(cabecalho, "versaoPadrao", linha_cabecalho.get("versaoPadrao_cabecalho", "1.04.01"))
+        sub(cabecalho, "versaoPadrao", linha_cabecalho.get("versaoPadrao_cabecalho", "1.05.00"))
 
         mensagem = ET.SubElement(root, "ans:Mensagem")
         op_ans = ET.SubElement(mensagem, "ans:operadoraParaANS")
@@ -557,6 +557,7 @@ elif menu == "Converter Excel para XTE/XML":
         except Exception as e:
             st.error(f"Erro durante o processamento: {str(e)}")
             st.error("Verifique se o arquivo Excel possui a estrutura correta.")
+
 
 
 
